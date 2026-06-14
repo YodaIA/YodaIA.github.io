@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MaPaPa - Centro de Atención Podológica en Tulipanes</title>
+    <meta name="description" content="MaPaPa combina alta calidad técnica con trato humano para el bienestar, movilidad y estética saludable de tus pies en Pachuca y Mineral de la Reforma.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --azul-principal: #377DCC;
+            --verde-menta: #48C9B0;
+            --blanco: #FFFFFF;
+            --gris-fondo: #F4F8FA;
+            --texto-oscuro: #2C3E50;
+            --texto-suave: #566573;
+            --shadow: 0 10px 30px rgba(55, 125, 204, 0.08);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--texto-oscuro);
+            background-color: var(--blanco);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navegación Fija */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 65px;
+            width: auto;
+            display: block;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            align-items: center;
+        }
+
+        nav ul a {
+            text-decoration: none;
+            color: var(--texto-oscuro);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        nav ul a:hover {
+            color: var(--azul-principal);
+        }
+
+        .btn-cta-nav {
+            background-color: var(--verde-menta);
+            color: var(--blanco) !important;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            box-shadow: 0 4px 10px rgba(72, 201, 176, 0.3);
+        }
+
+        .btn-cta-nav:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(72, 201, 176, 0.4);
+        }
+
+        /* Menú hamburguesa */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+            padding: 5px;
+            background: none;
+            border: none;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 25px;
+            height: 2px;
+            background-color: var(--texto-oscuro);
+            transition: var(--transition);
+            border-radius: 2px;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+
+        /* Sección de Portada (Hero) */
+        .hero {
+            margin-top: 85px;
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #F4F8FA 0%, #E8F4F8 100%);
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 3rem;
+            color: var(--azul-principal);
+            line-height: 1.2;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero-text p {
+            font-size: 1.15rem;
+            color: var(--texto-suave);
+            margin-bottom: 35px;
+            max-width: 600px;
+        }
+
+        .hero-image-wrapper {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .hero-image-wrapper img {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        .btn-main {
+            display: inline-block;
+            background-color: var(--azul-principal);
+            color: var(--blanco);
+            text-decoration: none;
+            padding: 15px 35px;
+            border-radius: 30px;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(55, 125, 204, 0.3);
+            transition: var(--transition);
+        }
+
+        .btn-main:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(55, 125, 204, 0.4);
+        }
+
+        /* Banner de Propósito / Zona Segura */
+        .banner-concept {
+            max-width: 1200px;
+            margin: 100px auto;
+            padding: 0 20px;
+        }
+
+        .banner-card {
+            background-color: var(--blanco);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            align-items: center;
+        }
+
+        .banner-card img {
+            width: 100%;
+            height: 100%;
+            min-height: 400px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .banner-content {
+            padding: 60px;
+        }
+
+        .banner-content h2 {
+            color: var(--azul-principal);
+            margin-bottom: 20px;
+            font-size: 2.2rem;
+            font-weight: 700;
+        }
+
+        .banner-content p {
+            font-size: 1.1rem;
+            color: var(--texto-suave);
+        }
+
+        /* Servicios */
+        .services {
+            background-color: var(--gris-fondo);
+            padding: 100px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 60px auto;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--azul-principal);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .section-title p {
+            color: var(--texto-suave);
+            font-size: 1.1rem;
+        }
+
+        .services-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: var(--blanco);
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-top: 4px solid transparent;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-top: 4px solid var(--verde-menta);
+        }
+
+        .service-image-container {
+            width: 100%;
+            height: 240px;
+            overflow: hidden;
+            background-color: #eee;
+        }
+
+        .service-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .service-info {
+            padding: 35px 30px;
+            flex-grow: 1;
+        }
+
+        .service-icon {
+            width: 50px;
+            height: 50px;
+            background-color: rgba(72, 201, 176, 0.1);
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .service-icon svg {
+            width: 25px;
+            height: 25px;
+            fill: var(--verde-menta);
+        }
+
+        .service-card h3 {
+            margin-bottom: 12px;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .service-card p {
+            color: var(--texto-suave);
+            font-size: 0.95rem;
+        }
+
+        /* Ventajas Competitivas */
+        .usp-section {
+            padding: 100px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .usp-content h2 {
+            font-size: 2.5rem;
+            color: var(--azul-principal);
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+
+        .usp-content p {
+            color: var(--texto-suave);
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .usp-image img {
+            width: 100%;
+            border-radius: 24px;
+            box-shadow: var(--shadow);
+            display: block;
+        }
+
+        /* Pie de Página */
+        footer {
+            background-color: var(--texto-oscuro);
+            color: var(--blanco);
+            padding: 80px 20px 30px 20px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 50px;
+            margin-bottom: 30px;
+        }
+
+        .footer-brand p {
+            color: #A6ACAF;
+            margin-top: 25px;
+            font-size: 0.95rem;
+            max-width: 300px;
+        }
+
+        .footer-brand img {
+            height: 70px;
+            width: auto;
+            display: block;
+        }
+
+        .footer-links h4, .footer-contact h4 {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            position: relative;
+            font-weight: 600;
+        }
+
+        .footer-links h4::after, .footer-contact h4::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--verde-menta);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links ul a {
+            color: #A6ACAF;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links ul a:hover {
+            color: var(--verde-menta);
+            padding-left: 5px;
+        }
+
+        .footer-contact p {
+            color: #A6ACAF;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+        }
+
+        .copyright {
+            text-align: center;
+            color: #7F8C8D;
+            font-size: 0.9rem;
+        }
+
+        /* =============================================
+           RESPONSIVE DESIGN — COMPLETO
+           ============================================= */
+
+        /* Tablet grande */
+        @media (max-width: 1024px) {
+            .hero-text h1 {
+                font-size: 2.4rem;
+            }
+            .usp-section {
+                gap: 40px;
+            }
+            .banner-content {
+                padding: 40px;
+            }
+        }
+
+        /* Tablet */
+        @media (max-width: 968px) {
+
+            /* Nav: mostrar hamburguesa, ocultar links */
+            .hamburger {
+                display: flex;
+            }
+
+            nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: rgba(255, 255, 255, 0.98);
+                box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+                padding: 20px 0;
+            }
+
+            nav.open {
+                display: block;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 0;
+                align-items: stretch;
+            }
+
+            nav ul li a {
+                display: block;
+                padding: 14px 30px;
+                font-size: 1rem;
+                border-bottom: 1px solid rgba(0,0,0,0.04);
+            }
+
+            nav ul li:last-child a {
+                margin: 15px 20px 5px;
+                text-align: center;
+                border-bottom: none;
+                border-radius: 25px;
+            }
+
+            /* Hero */
+            .hero {
+                padding: 60px 20px;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 35px;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero-text p {
+                margin: 0 auto 30px auto;
+            }
+
+            .hero-image-wrapper {
+                max-width: 500px;
+                margin: 0 auto;
+            }
+
+            /* Banner */
+            .banner-concept {
+                margin: 60px auto;
+            }
+
+            .banner-card {
+                grid-template-columns: 1fr;
+            }
+
+            .banner-card img {
+                min-height: 280px;
+                max-height: 320px;
+            }
+
+            .banner-content {
+                padding: 40px 30px;
+            }
+
+            .banner-content h2 {
+                font-size: 1.8rem;
+            }
+
+            /* Servicios */
+            .services {
+                padding: 70px 20px;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+                max-width: 520px;
+                margin: 0 auto;
+            }
+
+            /* USP */
+            .usp-section {
+                grid-template-columns: 1fr;
+                padding: 70px 20px;
+                gap: 35px;
+                text-align: center;
+            }
+
+            .usp-content h2 {
+                font-size: 2rem;
+            }
+
+            .usp-image {
+                max-width: 500px;
+                margin: 0 auto;
+                width: 100%;
+            }
+
+            /* Footer */
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 35px;
+            }
+
+            .footer-brand img {
+                margin: 0 auto;
+            }
+
+            .footer-brand p {
+                max-width: 100%;
+                text-align: center;
+            }
+        }
+
+        /* Móvil */
+        @media (max-width: 600px) {
+            .logo img {
+                height: 50px;
+            }
+
+            .hero {
+                padding: 40px 15px;
+            }
+
+            .hero-text h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero-text p {
+                font-size: 1rem;
+            }
+
+            .btn-main {
+                padding: 13px 28px;
+                font-size: 0.95rem;
+            }
+
+            .banner-content {
+                padding: 30px 20px;
+            }
+
+            .banner-content h2 {
+                font-size: 1.5rem;
+            }
+
+            .banner-content p {
+                font-size: 1rem;
+            }
+
+            .section-title h2 {
+                font-size: 1.7rem;
+            }
+
+            .section-title p {
+                font-size: 1rem;
+            }
+
+            .services {
+                padding: 60px 15px;
+            }
+
+            .service-info {
+                padding: 25px 20px;
+            }
+
+            .usp-section {
+                padding: 60px 15px;
+            }
+
+            .usp-content h2 {
+                font-size: 1.7rem;
+            }
+
+            .usp-content p {
+                font-size: 1rem;
+            }
+
+            footer {
+                padding: 60px 15px 25px;
+            }
+
+            .footer-links h4, .footer-contact h4 {
+                font-size: 1.1rem;
+            }
+
+            .copyright {
+                font-size: 0.82rem;
+            }
+        }
+
+        /* Móvil muy pequeño */
+        @media (max-width: 380px) {
+            .hero-text h1 {
+                font-size: 1.55rem;
+            }
+
+            .banner-content h2 {
+                font-size: 1.35rem;
+            }
+
+            .section-title h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Encabezado y Navegación -->
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <img src="mapapa-07.png" alt="MaPaPa Logotipo Oficial">
+            </div>
+            <button class="hamburger" id="hamburger" aria-label="Abrir menú">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="#inicio" class="nav-link">Inicio</a></li>
+                    <li><a href="#servicios" class="nav-link">Servicios</a></li>
+                    <li><a href="#nosotros" class="nav-link">Nosotros</a></li>
+                    <li><a href="#contacto" class="btn-cta-nav nav-link">Agendar Cita</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+
+    <!-- Sección de Portada -->
+    <section class="hero" id="inicio">
+        <div class="hero-container">
+            <div class="hero-text">
+               <!-- <h1>Una experiencia sin igual en el cuidado de tus pies</h1> -->
+		<h1>Elimina el dolor en tus pies</h1>
+		<p>Camina sin molestias, libérate del dolor y dale a tus pies el cuidado que se merecen.</p>
+                <!-- <p>En MaPaPa fusionamos conocimiento técnico avanzado con un trato humano y cercano. Cuidamos tu salud podológica en un ambiente diseñado para tu tranquilidad.</p>
+                -->
+		<a href="#contacto" class="btn-main">Agendar cita ahora</a>
+            </div>
+            <div class="hero-image-wrapper">
+                <img src="PORTADA-FB.png" alt="MaPaPa Bienestar y Alivio">
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Servicios Especializados -->
+    <section class="services" id="servicios">
+        <div class="section-title">
+           	 <h2>Nuestros Servicios Profesionales</h2>
+    		<!-- <p> Camina sin molestias, libérate del dolor y dale a tus pies el cuidado que se merecen. </p> -->
+       		<p>Atención integral orientada a la salud preventiva y la estética saludable de tus pies.</p> 
+        </div>
+        <div class="services-grid">
+            
+            <div class="service-card">
+                <div class="service-image-container">
+                    <img src="alicate.jpeg" alt="Corte profesional de uñas con alicate en MaPaPa">
+                </div>
+                <div class="service-info">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+                    </div>
+                    <h3>Corte Profesional de Uñas</h3>
+                    <p>Un corte mal hecho es el origen de la mayoría de los problemas en tus pies. Un corte con la técnica podológica correcta, te previene de uñas enterradas, hongos y más.</p>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-image-container">
+                    <img src="enterrada.png" alt="Tratamiento profesional en MaPaPa">
+                </div>
+                <div class="service-info">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+                    </div>
+                    <h3>Uña Enterrada</h3>
+                    <p>La uña enterrada tiene solución. Te atendemos con técnicas específicas que resuelven el problema de raíz, sin dolor.</p>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-image-container">
+                    <img src="podObserva.png" alt="Evaluación clínica en MaPaPa">
+                </div>
+                <div class="service-info">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm1-11V7h-2v4H7v2h4v4h2v-4h4v-2h-4z"/></svg>
+                    </div>
+                    <h3>Evaluación de Hongo</h3>
+                    <p>¿Esa uña rara te preocupa? Te damos un diagnóstico claro y preciso para que sepas exactamente qué tienes y cómo tratarlo.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- Banner Concepto: Zona Segura -->
+    <section class="banner-concept">
+        <div class="banner-card">
+            <img src="image_1a1086.jpg" alt="Zona Segura MaPaPa">
+            <div class="banner-content">
+                <h2>Tu espacio de tranquilidad</h2>
+                <p>Nuestra misión es transformar la atención podológica preventiva en México. Te ofrecemos una zona segura, libre de juicios y llena de soluciones efectivas para recuperar tu bienestar y movilidad en cada paso.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Por qué MaPaPa -->
+    <section class="usp-section" id="nosotros">
+        <div class="usp-content">
+            <h2>¿Por qué elegir MaPaPa?</h2>
+            <p>A diferencia de los consultorios podológicos tradicionales o el pedicure estético superficial, nosotros equilibramos perfectamente la solidez técnica con la calidez humana.</p>
+            <p>Sabemos que tus pies sostienen tu vida; por ello, cada procedimiento está respaldado por innovación responsable, profesionalismo y un profundo sentido de cuidado.</p>
+        </div>
+        <div class="usp-image">
+            <img src="unnamed.jpg" alt="Atención profesional MaPaPa">
+        </div>
+    </section>
+
+    <!-- Pie de Página -->
+    <footer id="contacto">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <img src="mapapa-07.png" alt="MaPaPa Blanco">
+                <p>Cuidado, alivio y bienestar para tus pies. Nos encargamos de que vuelvas a caminar con total comodidad y confianza.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Navegación</h4>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#nosotros">Nosotros</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>Ubicación y Contacto</h4>
+                <p>📍 Tulipanes, Mineral de la Reforma / Pachuca, Hidalgo.</p>
+                <p>✨ Encuéntranos oficialmente en Google Maps como "MaPaPa".</p>
+                <p>👥 Enfoque preventivo para toda la familia.</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2026 MaPaPa. Todos los derechos reservados. Diseñado con un enfoque de salud y bienestar integral.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Menú hamburguesa
+        const hamburger = document.getElementById('hamburger');
+        const nav = document.getElementById('main-nav');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            nav.classList.toggle('open');
+        });
+
+        // Cerrar menú al hacer clic en un enlace
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                nav.classList.remove('open');
+            });
+        });
+    </script>
+
+</body>
+</html>
